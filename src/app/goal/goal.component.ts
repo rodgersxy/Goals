@@ -1,5 +1,7 @@
-import { Goal } from '../goal';
+
 import { Component, OnInit } from '@angular/core';
+import { Goal } from '../goal';
+
 
 @Component({
   selector: 'app-goal',
@@ -8,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 
 })
 export class GoalComponent implements OnInit {
+  
   goals = [
       new Goal (1,'Watch Finding Nemo','Find an online version and watch merlin find his son'),
       new Goal (2,'Buy Cookies','I have to buy cookies for the parrot'),
@@ -17,11 +20,16 @@ export class GoalComponent implements OnInit {
       new Goal (6, 'Plot my world domination plan','Cause I am an evil overlord'),
   ]
 
-  toogleDetails(index){
-      this.goals[index].showDescription = !this.goals[index].showDescription;
+  completeGoal(isComplete,index){
+    if (isComplete){
+      this.goals.splice(index,1);
+    }
   }
-
-constructor() { }
-ngOnInit() {
-}
+  toogleDetails(index){
+    this.goals[index].showDescription= !this.goals[index].showDescription
+  }
+  constructor() { }
+  ngOnInit(){
+    
+  }
 }
